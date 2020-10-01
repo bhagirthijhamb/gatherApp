@@ -12,7 +12,7 @@ import axios from 'axios';
 
 export const getRoomDetails = (name) => (dispatch) => {
   dispatch(setRoomLoading());
-  axios.get(`http://localhost:5000/room/${name}`)
+  axios.get(`/${name}`)
         .then(res => {
             console.log(res.data);
             dispatch({
