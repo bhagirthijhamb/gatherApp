@@ -1,0 +1,9 @@
+export const GET_ROOM_NAME = "GET_ROOM_NAME";
+export const GET_ROOM_URL = "GET_ROOM_URL";
+export const ROOM_LOADING = "ROOM_LOADING";
+// export const TOGGLE_CAMERA_SCREEN = "TOGGLE_CAMERA_SCREEN";
+export const ON_ERROR = "ON_ERROR";
+export const TOGGLE_PUB_AUDIO = "TOGGLE_PUB_AUDIO";
+export const TOGGLE_PUB_VIDEO = "TOGGLE_PUB_VIDEO";
+export const TOGGLE_SUB_AUDIO = "TOGGLE_SUB_AUDIO";
+export const TOGGLE_SUB_VIDEO = "TOGGLE_SUB_VIDEO";
