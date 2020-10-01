@@ -42,7 +42,7 @@ class Room extends Component {
           <p>Loading...</p>
         </div>
       )
-    } else if (!this.props.roomDetails.roomDetails["apiKey"]) {
+    } else if (this.props.roomDetails.roomDetails["apiKey"]) {
       return (
         <div>
           <OTSession
@@ -59,6 +59,12 @@ class Room extends Component {
               <Subscriber />
             </OTStreams>
           </OTSession>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>Still loading...</p>
         </div>
       );
     }
