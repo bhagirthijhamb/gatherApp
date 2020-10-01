@@ -12,7 +12,7 @@ import axios from 'axios';
 
 export const getRoomDetails = (name) => (dispatch) => {
   dispatch(setRoomLoading());
-  axios.get(`/${name}`)
+  axios.get(`/room/${name}`)
         .then(res => {
             console.log(res.data);
             dispatch({
