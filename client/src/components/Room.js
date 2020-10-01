@@ -34,7 +34,7 @@ class Room extends Component {
   render() {
     const { roomDetails } = this.props.roomDetails;
     console.log(this.props.roomDetails.roomDetails);
-    console.log(this.props.roomDetails.roomDetails[apiKey]);
+    console.log(this.props.roomDetails.roomDetails["apiKey"]);
     // if (Object.keys(this.props.roomDetails.roomDetails).length != 0) {
     if (this.props.roomDetails.loading) {
       return (
