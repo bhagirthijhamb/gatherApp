@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,7 +11,9 @@ export default class Navbar extends Component {
         <div className="navBar-right">
           <ul>
             <li className="home">
-              <FontAwesomeIcon icon={faHome} />
+              <Link to={`/`} >
+                <FontAwesomeIcon icon={faHome} />
+              </Link>
             </li>
             <li className="language">
               English <FontAwesomeIcon icon={faCaretDown} />
