@@ -10,8 +10,7 @@ class Main extends Component {
     this.state = {
       input: "",
       name: "",
-      error: null,
-      connected: false,
+      error: null
     };    
   }
 
@@ -52,7 +51,7 @@ class Main extends Component {
             placeholder="Enter session id"
             value={this.state.input}
           />
-          <button>Create Session</button>
+          <button className='createSession'>Create Session</button>
         </form>
 
       { name ?         

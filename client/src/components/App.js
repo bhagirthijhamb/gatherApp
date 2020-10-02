@@ -10,7 +10,6 @@ import Room from './Room';
 import Footer from './Footer';
 
 class App extends Component { 
-
   render() {
     return (
       <Provider store={store}>
@@ -30,4 +29,3 @@ class App extends Component {
 }
 
 export default preloadScript(App);
-// export default App;

@@ -28,7 +28,7 @@ export default class RadioButtons extends Component {
     return this.props.buttons.map((button, index) => {
       let key = this.state.id + "_" + index + "_" + button.value;
       return (
-        <div key={key}>
+        <div className="radioBtn" key={key}>
           <label htmlFor={key}>{button.label}</label>
           <input
             type="radio"

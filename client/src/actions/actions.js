@@ -48,15 +48,12 @@ export const onError = (error) => {
 };
 
 export const togglePublisherAudio = () => {
-    console.log('audio working');
     return {
         type: TOGGLE_PUB_AUDIO,
     };
 };
 
 export const togglePublisherVideo = () => {
-    console.log('video working');
-
   return {
     type: TOGGLE_PUB_VIDEO,
   };

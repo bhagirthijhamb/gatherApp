@@ -34,9 +34,7 @@ class Subscriber extends Component {
   };
 
   render() {
-     console.log(this.props.publisher);
      const { error, audio, video } = this.props.subscriber;
-     console.log(audio, video);
     return (
       <div>
         {error ? <div>{error}</div> : null}

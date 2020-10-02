@@ -13,14 +13,6 @@ app.listen(PORT, () => {
 
 app.use(cors());
 
-// app.use(express.static(path.join(__dirname, '.', 'build')));
-
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
-
-
 const apiKey = process.env.TOKBOX_API_KEY;
 const secret = process.env.TOKBOX_SECRET;
 
@@ -45,6 +37,7 @@ function findRoomFromSessionId(sessionId) {
   return _.findKey(roomToSessionIdDictionary, function (value) { return value === sessionId; });
 }
 
+// route to generate sessionId and token for the input (name) entered by the user from front-end
 app.get("/room/:name", function (req, res) {
   var roomName = req.params.name;
   var sessionId;
@@ -75,12 +68,6 @@ app.get("/room/:name", function (req, res) {
         return;
       }
 
-      console.log(session);
-
-      // now that the room name has a session associated wit it, store it in memory
-      // IMPORTANT: Because this is stored in memory, restarting your server will reset these values
-      // if you want to store a room-to-session association in your production application
-      // you should use a more persistent storage for them
       roomToSessionIdDictionary[roomName] = session.sessionId;
 
       // generate token
@@ -92,8 +79,6 @@ app.get("/room/:name", function (req, res) {
         token: token,
       });
     });
-
-    console.log("I'm here")
   }
 });
 
