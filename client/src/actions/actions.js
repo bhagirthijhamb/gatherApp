@@ -7,6 +7,7 @@ import {
   TOGGLE_PUB_VIDEO,
   TOGGLE_SUB_AUDIO,
   TOGGLE_SUB_VIDEO,
+  END_CALL
 } from "./types";
 import axios from 'axios';
 
@@ -70,5 +71,11 @@ export const toggleSubscriberAudio = () => {
 export const toggleSubscriberVideo = () => {
   return {
     type: TOGGLE_SUB_VIDEO,
+  };
+};
+
+export const endCall = () => {
+  return {
+    type: END_CALL,
   };
 };

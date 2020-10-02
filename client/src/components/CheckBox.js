@@ -28,8 +28,9 @@ export default class CheckBox extends Component {
   render() {
     return (
       <div>
-        <label htmlFor={this.state.id}>{this.props.label}</label>
+        {/* <label htmlFor={this.state.id}>{this.props.label}</label> */}
         <input
+          className = "checked"
           type="checkbox"
           checked={this.state.isChecked}
           id={this.state.id}

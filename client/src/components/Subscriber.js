@@ -10,6 +10,14 @@ import {
   toggleSubscriberVideo,
 } from "./../actions/actions";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faVideo,
+  faVideoSlash,
+  faMicrophone,
+  faMicrophoneSlash,
+} from "@fortawesome/free-solid-svg-icons";
+
 class Subscriber extends Component {
 
   setAudio = () => {
@@ -46,16 +54,32 @@ class Subscriber extends Component {
             retryAttemptTimeout={2000}
           />
         </div>
-        <CheckBox
-          label="Subscribe to Audio"
-          initialChecked={audio}
-          onChange={this.setAudio}
-        />
-        <CheckBox
-          label="Subscribe to Video"
-          initialChecked={video}
-          onChange={this.setVideo}
-        />
+        <div className="controls">
+          <div className="audio-controls">
+            {audio ? (
+              <FontAwesomeIcon icon={faMicrophone} className="audio" />
+            ) : (
+              <FontAwesomeIcon icon={faMicrophoneSlash} className="audio" />
+            )}
+            <CheckBox
+              label="Subscribe to Audio"
+              initialChecked={audio}
+              onChange={this.setAudio}
+            />
+          </div>
+          <div className="audio-controls">
+            {video ? (
+              <FontAwesomeIcon icon={faVideo} className="video" />
+            ) : (
+              <FontAwesomeIcon icon={faVideoSlash} className="video" />
+            )}
+            <CheckBox
+              label="Subscribe to Video"
+              initialChecked={video}
+              onChange={this.setVideo}
+            />
+          </div>
+        </div>
       </div>
     );
   }

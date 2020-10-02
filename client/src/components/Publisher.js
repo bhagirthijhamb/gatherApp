@@ -26,9 +26,9 @@ class Publisher extends Component {
   };
 
   render() {
-    console.log(this.props.publisher);
+    // console.log(this.props.publisher);
     const { error, audio, video } = this.props.publisher;
-    console.log(audio, video);
+    // console.log(audio, video);
     return (
       <div>
         {error ? <div>{error}</div> : null}
@@ -45,18 +45,28 @@ class Publisher extends Component {
         </div>
         <div className="controls">
           <div className="audio-controls">
-            <FontAwesomeIcon icon={faMicrophone} className="audio" />
+            {audio ? (
+              <FontAwesomeIcon icon={faMicrophone} className="audio" />
+            ) : (
+              <FontAwesomeIcon icon={faMicrophoneSlash} className="audio" />
+            )}
             <CheckBox
-              // label="Publish Audio"
+              label="Publish Audio"
               initialChecked={audio}
               onChange={this.setAudio}
             />
           </div>
 
+          {}
+
           <div className="video-controls">
-            <FontAwesomeIcon icon={faVideo} className="video" />
+            {video ? (
+              <FontAwesomeIcon icon={faVideo} className="video" />
+            ) : (
+              <FontAwesomeIcon icon={faVideoSlash} className="video" />
+            )}
             <CheckBox
-              // label="Publish Video"
+              label="Publish Video"
               initialChecked={video}
               onChange={this.setVideo}
             />

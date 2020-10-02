@@ -8,14 +8,18 @@ import { connect } from "react-redux";
 import Publisher from "./Publisher";
 import Subscriber from "./Subscriber";
 
+
+
 class Room extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       error: null,
-      connected: false
+      connected: false,
     };
+
+    this.otSessionRef = React.createRef();
 
     this.sessionEvents = {
       sessionConnected: () => {
@@ -23,9 +27,32 @@ class Room extends Component {
       },
       sessionDisconnected: () => {
         this.setState({ connected: false });
-      }
-    };    
+      },
+      streamCreated: (event) => {
+        console.log("Stream created!", event);
+      },
+      streamDestroyed: (event) => {
+        console.log("Stream destroyed!", event);
+      },
+    };
   }
+
+  sendSignal = () => {
+
+    const { connected } = this.state;
+    if (connected) {
+      this.otSessionRef.current.signal({
+        apiKey:"",
+        sessionId:"",
+        token:""
+      });
+    }
+  };
+
+  handleDisconnect = () => {
+    console.log("disconnecting...");
+    this.sendSignal();
+  };
 
   onError = (err) => {
     this.setState({ error: `Failed to connect: ${err.message}` });
@@ -33,15 +60,13 @@ class Room extends Component {
 
   render() {
     const { roomDetails } = this.props.roomDetails;
-    console.log(this.props.roomDetails.roomDetails);
-    console.log(this.props.roomDetails.roomDetails["apiKey"]);
-    // if (Object.keys(this.props.roomDetails.roomDetails).length != 0) {
+
     if (this.props.roomDetails.loading) {
       return (
         <div>
           <p>Loading...</p>
         </div>
-      )
+      );
     } else if (this.props.roomDetails.roomDetails["apiKey"]) {
       return (
         <div>
@@ -51,20 +76,27 @@ class Room extends Component {
             token={roomDetails.token}
             eventHandlers={this.sessionEvents}
             onError={this.onError}
+            ref={this.otSessionRef}
           >
             {this.state.error ? <div>{this.state.error}</div> : null}
-            <ConnectionStatus connected={this.state.connected} />
-            <Publisher />
-            <OTStreams>
-              <Subscriber />
-            </OTStreams>
+            <ConnectionStatus
+              connected={this.state.connected}
+              handleDisconnect={this.handleDisconnect}
+              className="call-button"
+            />
+            <div className="chatWindows">
+              <Publisher />
+              <OTStreams>
+                <Subscriber />
+              </OTStreams>
+            </div>
           </OTSession>
         </div>
       );
     } else {
       return (
         <div>
-          <p>Still loading...</p>
+          <p>Call ended</p>
         </div>
       );
     }

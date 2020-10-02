@@ -22,48 +22,43 @@ class Main extends Component {
   };
 
   handleSubmit = (e) => {
+    console.log(this.state.input)
     e.preventDefault();
     this.setState(
       (state) => ({
         name: state.input,
       }),
-      this.props.getRoomDetails(this.props.name.name)
+      () => this.props.setRoomName(this.state.name)
     );
   };
 
   handleClick = (e) => {
-    e.preventDefault();
-    this.props.setRoomName(this.state.name);
-  };
-
-  handleClick2 = (e) => {
+    console.log("hello", this.state.name, this.props.name.name);
     e.preventDefault();
     this.props.getRoomDetails(this.props.name.name);
   };
 
   render() {
-    // console.log("hello", this.state.name, this.props.name.name);
     return (
-      <div>
-        <h2>Type a room name of your choice</h2>
+      <div className="main">
+        <h2>Create a meeting</h2>
 
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             onChange={this.handleChange}
+            placeholder="Enter session id"
             value={this.state.input}
           />
-          <button>Submit</button>
+          <button>Create Session</button>
         </form>
 
-        <button onClick={this.handleClick}>Submit2</button>
-
-        <button onClick={this.handleClick2}>
+        <button onClick={this.handleClick}>
           <Link
             //   key={"link" + this.state.name}
             to={`/room/${this.state.name}`}
           >
-            GO
+            Connect 
           </Link>
         </button>
       </div>

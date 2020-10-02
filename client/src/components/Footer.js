@@ -5,7 +5,7 @@ export default class Footer extends Component {
     return (
       <div className="footer">
         <p>
-          Copyright ©2020 Bhagirthi Jhamb for Gather Inc Video Communications, Inc. All rights reserved.
+          Copyright ©2020 Bhagirthi Jhamb for Gather App. All rights reserved.
         </p>
         <a>Privacy and Legal Policies</a>
       </div>
