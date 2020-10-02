@@ -1,7 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses the following technologies for the app
+
+# ReactJS
+Front-end library of choice
+# Redux
+State management tool for the app
+# Router
+For managing client-side routing.
+# Fontawesome
+UI library for implementing icons in the app
+# NodeJS
+For writing the back-end and route for a session
+# Express
+
+The seesions are created from the backend/ NodeJS server ans can be requested by any number of clients by passing the sessionID.
+
+### UI
+
+**Note-**
+
+# Steps to start Node.js server
+1. git clone https://github.com/bhagirthijhamb/gatherApp
+2. cd cognizantProject
+3. npm install
+4. nodemon
+5. Server will start at port 5000
+
+# Steps to start React.js UI
+1. Open new terminal
+2. cd cognizantProject/client
+3. npm install
+4. npm start
+5. Application will open in the browser window (http://localhost:3000/)
+
+# How the application works
+1. The app is hosted at https://morning-cliffs-26944.herokuapp.com/
+2. The host can type a sessionId, click on Create Seesion button to create a session.
+3. Once a seesion is created connect butto appears tha can be clicked to start the video call
+4. The host can share this session id with other attendees
+5. The attendees the enter the same session to join the call.
+6. The app works for any number of attendes but at this stage the UI set for two people. It an be extended to accomodate more attendees
+7. At any time attendee can mute himself and other attendees by unchecking the microphone icon.
+8. Can toggle the video on and off with camera icon.
+9. Attendees canshare their screen bu choosing the Screen Share option.
+9. The attendee can be leave the session by clicking the red call button at the bottom.
+10. This  will not end the session and the attendees can rejoin the session by entering the same session id on the home page.
+8. 
+
+
+
+
+1. http://localhost:8080/ (UI main screen) displays the list of agents
+2. User can select one of the agents by clicking on the agent name to display detailed configuration information about that device.
+3. Agent details page displays two tables for with details of cameras and users attached to that agent.
+4. User can click on individual camera to see camera details and its recording schedule.
+5. Navigation bar at the top can be used to go back to home page at any point in the application.
+
+
+--------------------------------------------------------------
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -66,3 +123,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+

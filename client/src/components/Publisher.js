@@ -10,8 +10,16 @@ import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faVideoSlash, faMicrophone, faMicrophoneSlash } from "@fortawesome/free-solid-svg-icons";
+import RadioButtons from "./RadioButtons";
 
 class Publisher extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      videoSource: "camera"
+    };
+  }
 
   setAudio = () => {
     this.props.togglePublisherAudio();
@@ -25,13 +33,31 @@ class Publisher extends Component {
     this.props.onError(err.message);
   };
 
+  setVideoSource = (videoSource) => {
+    this.setState({ videoSource });
+  }
+
   render() {
-    // console.log(this.props.publisher);
     const { error, audio, video } = this.props.publisher;
-    // console.log(audio, video);
     return (
       <div>
         {error ? <div>{error}</div> : null}
+        <div className="radioButtons">
+          <RadioButtons
+            buttons={[
+              {
+                label: "Camera",
+                value: "camera",
+              },
+              {
+                label: "Screen",
+                value: "screen",
+              },
+            ]}
+            initialChecked={this.state.videoSource}
+            onChange={this.setVideoSource}
+          />
+        </div>
         <div className="publisherContainer">
           <OTPublisher
             properties={{
@@ -39,10 +65,13 @@ class Publisher extends Component {
               publishVideo: video,
               width: "100%",
               height: "100%",
+              videoSource:
+                this.state.videoSource === "screen" ? "screen" : undefined,
             }}
             onError={this.onError}
           />
         </div>
+
         <div className="controls">
           <div className="audio-controls">
             {audio ? (
@@ -56,8 +85,6 @@ class Publisher extends Component {
               onChange={this.setAudio}
             />
           </div>
-
-          {}
 
           <div className="video-controls">
             {video ? (

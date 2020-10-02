@@ -9,6 +9,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 body {
     background-color: #eee;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
 }
 
 .container {
@@ -141,28 +142,46 @@ li {
 
 .main {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 [type="checkbox"] {
     margin-left: 3px;
 }
 
-.call {
+.callIcon {
   color: red;
-  font-size: 1.5rem
+  font-size: 2rem;
+  margin-top: 1.5rem;
 }
 
-.callSlash {
-  color: grey
+.callIcon svg:first-child {
+ display: block;
+ margin: auto;
 }
-.mainSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.callSlashIcon {
+  color: grey
 }
 
 .call-button {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+}
+
+.chatWindows div:first-child div:first-child div:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background-color: #2073d9;
+  padding: 3px;
+  border-radius: 5px;
+  color: #fff;
 }

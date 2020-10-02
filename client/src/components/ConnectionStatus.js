@@ -7,23 +7,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class ConnectionStatus extends Component {
+  constructor(props){
+      super(props);
+  }
 
-constructor(props){
-    super(props);
-}
-
-handleClick = () => {
-  console.log('abc')
-  this.props.endCall()
-}
+  handleClick = () => {
+    this.props.endCall()
+  }
   
   render() {
-    // let status = this.props.connected ? "Connected" : "Disconnected";
     let status = this.props.connected;
     return (
-      <div>
+      <div className="callIcon">
         {status ? (
-          <FontAwesomeIcon icon={faPhone} className="call" onClick={this.handleClick}/>
+          <FontAwesomeIcon
+            icon={faPhone}
+            className="call"
+            onClick={this.handleClick}
+          />
         ) : (
           <FontAwesomeIcon icon={faPhoneSlash} className="callSlash" />
         )}

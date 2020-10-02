@@ -22,7 +22,6 @@ class Main extends Component {
   };
 
   handleSubmit = (e) => {
-    console.log(this.state.input)
     e.preventDefault();
     this.setState(
       (state) => ({
@@ -30,15 +29,18 @@ class Main extends Component {
       }),
       () => this.props.setRoomName(this.state.name)
     );
+    this.setState({
+      input: ''
+    })
   };
 
   handleClick = (e) => {
-    console.log("hello", this.state.name, this.props.name.name);
     e.preventDefault();
     this.props.getRoomDetails(this.props.name.name);
   };
 
   render() {
+    const { name } = this.props.name;
     return (
       <div className="main">
         <h2>Create a meeting</h2>
@@ -53,14 +55,14 @@ class Main extends Component {
           <button>Create Session</button>
         </form>
 
+      { name ?         
         <button onClick={this.handleClick}>
-          <Link
-            //   key={"link" + this.state.name}
-            to={`/room/${this.state.name}`}
-          >
+          <Link to={`/room/${this.state.name}`} style={{color: '#fff', textDecoration: 'none'}}>
             Connect 
           </Link>
-        </button>
+        </button> :
+        ''
+        }
       </div>
     );
   }

@@ -9,7 +9,6 @@ import Publisher from "./Publisher";
 import Subscriber from "./Subscriber";
 
 
-
 class Room extends Component {
   constructor(props) {
     super(props);
@@ -37,22 +36,9 @@ class Room extends Component {
     };
   }
 
-  sendSignal = () => {
-
-    const { connected } = this.state;
-    if (connected) {
-      this.otSessionRef.current.signal({
-        apiKey:"",
-        sessionId:"",
-        token:""
-      });
-    }
-  };
-
-  handleDisconnect = () => {
-    console.log("disconnecting...");
-    this.sendSignal();
-  };
+  componentWillMount() {
+    window.OT.registerScreenSharingExtension("chrome", 'abc' , 2);
+  }
 
   onError = (err) => {
     this.setState({ error: `Failed to connect: ${err.message}` });
@@ -76,20 +62,16 @@ class Room extends Component {
             token={roomDetails.token}
             eventHandlers={this.sessionEvents}
             onError={this.onError}
-            ref={this.otSessionRef}
           >
-            {this.state.error ? <div>{this.state.error}</div> : null}
-            <ConnectionStatus
-              connected={this.state.connected}
-              handleDisconnect={this.handleDisconnect}
-              className="call-button"
-            />
             <div className="chatWindows">
               <Publisher />
               <OTStreams>
                 <Subscriber />
               </OTStreams>
             </div>
+
+            {this.state.error ? <div>{this.state.error}</div> : null}
+            <ConnectionStatus connected={this.state.connected} />
           </OTSession>
         </div>
       );
